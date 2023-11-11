@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightTracker", "LightTracker\LightTracker.csproj", "{15F9784B-AF26-49CD-BDD9-F13ECE49329B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{347B0C33-C3E0-47DA-A7B3-EFF99E2A9F79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15F9784B-AF26-49CD-BDD9-F13ECE49329B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F9784B-AF26-49CD-BDD9-F13ECE49329B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F9784B-AF26-49CD-BDD9-F13ECE49329B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F9784B-AF26-49CD-BDD9-F13ECE49329B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{347B0C33-C3E0-47DA-A7B3-EFF99E2A9F79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347B0C33-C3E0-47DA-A7B3-EFF99E2A9F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347B0C33-C3E0-47DA-A7B3-EFF99E2A9F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347B0C33-C3E0-47DA-A7B3-EFF99E2A9F79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8C1D43BA-0DCC-4367-8AE0-DB0307E6E75A}
+	EndGlobalSection
+EndGlobal
