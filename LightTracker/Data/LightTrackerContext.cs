@@ -7,12 +7,13 @@ namespace LightTracker.Data
 {
     public class LightTrackerContext : DbContext
     {
-        public DbSet<MQTTMessage> MQTTMessages { get; set; }
-
+        public DbSet<LightLog> LightLogs { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<User> User { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseSqlServer("Data Source=LILLEBRG-LAP\\TECH2DB;Initial Catalog=LightTrackerDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                .UseSqlServer("Data Source=DEM0N;Initial Catalog=LightTrackerDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
         }
     }
 }
