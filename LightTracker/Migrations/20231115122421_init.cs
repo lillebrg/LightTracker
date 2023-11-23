@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace LightTracker.Migrations
+namespace LightTrackerAPI.Migrations
 {
     /// <inheritdoc />
     public partial class init : Migration

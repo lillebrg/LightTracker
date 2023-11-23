@@ -5,20 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using LightTracker.Data;
+using LightTrackerAPI.Data;
 using Models;
 
-namespace LightTracker.Controllers
+namespace LightTrackerAPIAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class LightLogsController : ControllerBase
     {
-        private readonly LightTrackerContext _context;
+        private readonly LightTrackerAPIContext _context;
 
         public LightLogsController()
         {
-            _context = new LightTrackerContext();
+            _context = new LightTrackerAPIContext();
         }
 
         // GET: api/LightLogs
@@ -88,7 +88,7 @@ namespace LightTracker.Controllers
         {
           if (_context.LightLogs == null)
           {
-              return Problem("Entity set 'LightTrackerContext.LightLogs'  is null.");
+              return Problem("Entity set 'LightTrackerAPIContext.LightLogs'  is null.");
           }
             _context.LightLogs.Add(lightLog);
             await _context.SaveChangesAsync();

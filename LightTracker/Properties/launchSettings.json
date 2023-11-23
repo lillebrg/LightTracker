@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "LightTracker": {
+    "LightTrackerAPI": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
