@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightTrackerAPI", "LightTra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{347B0C33-C3E0-47DA-A7B3-EFF99E2A9F79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBrokerReciever", "MessageBrokerReciever\MessageBrokerReciever.csproj", "{64E8A8A8-9873-49EE-BEA2-31E23EDAAAD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQTTReceiver", "MQTTReceiver\MQTTReceiver.csproj", "{F5E49F1D-7224-4DF9-B8A9-B318FA0D59C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{347B0C33-C3E0-47DA-A7B3-EFF99E2A9F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{347B0C33-C3E0-47DA-A7B3-EFF99E2A9F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{347B0C33-C3E0-47DA-A7B3-EFF99E2A9F79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64E8A8A8-9873-49EE-BEA2-31E23EDAAAD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64E8A8A8-9873-49EE-BEA2-31E23EDAAAD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64E8A8A8-9873-49EE-BEA2-31E23EDAAAD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64E8A8A8-9873-49EE-BEA2-31E23EDAAAD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E49F1D-7224-4DF9-B8A9-B318FA0D59C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E49F1D-7224-4DF9-B8A9-B318FA0D59C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E49F1D-7224-4DF9-B8A9-B318FA0D59C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E49F1D-7224-4DF9-B8A9-B318FA0D59C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LightTrackerAPI.Migrations
 {
     [DbContext(typeof(LightTrackerAPIContext))]
-    [Migration("20231115122421_init")]
-    partial class init
+    [Migration("20231130165127_productNullable")]
+    partial class productNullable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,15 +36,21 @@ namespace LightTrackerAPI.Migrations
                     b.Property<DateTime>("DateSent")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TimeOnly")
+                    b.Property<int>("Hours")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("Minutes")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Seconds")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("LightLogs");
                 });
@@ -101,13 +107,13 @@ namespace LightTrackerAPI.Migrations
 
             modelBuilder.Entity("Models.LightLog", b =>
                 {
-                    b.HasOne("Models.User", "User")
+                    b.HasOne("Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Models.Product", b =>

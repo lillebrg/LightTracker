@@ -27,27 +27,6 @@ namespace LightTrackerAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LightLogs",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    TimeOnly = table.Column<int>(type: "int", nullable: false),
-                    DateSent = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LightLogs", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_LightLogs_User_UserId",
-                        column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Product",
                 columns: table => new
                 {
@@ -68,10 +47,33 @@ namespace LightTrackerAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "LightLogs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    DateSent = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Hours = table.Column<int>(type: "int", nullable: false),
+                    Minutes = table.Column<int>(type: "int", nullable: false),
+                    Seconds = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LightLogs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LightLogs_Product_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Product",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_LightLogs_UserId",
+                name: "IX_LightLogs_ProductId",
                 table: "LightLogs",
-                column: "UserId");
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Product_UserId",

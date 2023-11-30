@@ -39,17 +39,17 @@ namespace LightTrackerAPI.Migrations
                     b.Property<int>("Minutes")
                         .HasColumnType("int");
 
-                    b.Property<int>("Seconds")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("Seconds")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ProductId");
 
-                    b.ToTable("LightLogs", (string)null);
+                    b.ToTable("LightLogs");
                 });
 
             modelBuilder.Entity("Models.Product", b =>
@@ -75,7 +75,7 @@ namespace LightTrackerAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Product", (string)null);
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("Models.User", b =>
@@ -99,18 +99,18 @@ namespace LightTrackerAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User", (string)null);
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Models.LightLog", b =>
                 {
-                    b.HasOne("Models.User", "User")
+                    b.HasOne("Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Models.Product", b =>

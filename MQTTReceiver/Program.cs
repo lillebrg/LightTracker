@@ -4,7 +4,6 @@ using HiveMQtt.MQTT5.ReasonCodes;
 using HiveMQtt.MQTT5.Types;
 using System.Text.Json;
 using Models;
-using LightTrackerAPI;
 using LightTrackerAPIAPI.Controllers;
 
 var options = new HiveMQClientOptions
@@ -56,10 +55,15 @@ client.OnMessageReceived += (sender, args) =>
     Console.WriteLine(received_message);
     try
     {
+
+        //productid er null og det må den ikke være.
+        //enten lav ordenlig arduino JSON structure og send det med,
+        //eller fjern noget fra model for ikke at gøre det for advanceret
         LightLog lightlog = JsonSerializer.Deserialize<LightLog>(received_message);
         lightlog.DateSent = DateTime.Now;
         LightLogsController l = new LightLogsController();
         l.PostLightLog(lightlog);
+        Console.WriteLine("Done posting");
     }
     catch (JsonException ex)
     {
@@ -70,9 +74,3 @@ while (true)
 {
     await Task.Delay(1000);
 }
-
-
-
-
-
-

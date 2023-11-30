@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LightTrackerAPI.Migrations
 {
     [DbContext(typeof(LightTrackerAPIContext))]
-    [Migration("20231130145722_AddedSecMinHour")]
-    partial class AddedSecMinHour
+    [Migration("20231130161701_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,15 +42,15 @@ namespace LightTrackerAPI.Migrations
                     b.Property<int>("Minutes")
                         .HasColumnType("int");
 
-                    b.Property<int>("Seconds")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("Seconds")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("LightLogs");
                 });
@@ -107,13 +107,13 @@ namespace LightTrackerAPI.Migrations
 
             modelBuilder.Entity("Models.LightLog", b =>
                 {
-                    b.HasOne("Models.User", "User")
+                    b.HasOne("Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Models.Product", b =>
