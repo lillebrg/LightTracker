@@ -4,6 +4,7 @@ using LightTrackerAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LightTrackerAPI.Migrations
 {
     [DbContext(typeof(LightTrackerAPIContext))]
-    partial class LightTrackerAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20231130145722_AddedSecMinHour")]
+    partial class AddedSecMinHour
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +36,13 @@ namespace LightTrackerAPI.Migrations
                     b.Property<DateTime>("DateSent")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TimeOnly")
+                    b.Property<int>("Hours")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Minutes")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Seconds")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")

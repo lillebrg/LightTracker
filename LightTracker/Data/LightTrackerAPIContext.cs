@@ -13,7 +13,7 @@ namespace LightTrackerAPI.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseSqlServer("Data Source=DEM0N;Initial Catalog=LightTrackerAPIDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                .UseSqlServer("Data Source=192.168.148.128\\MSSQL;Initial Catalog=LightTrackerDB;User ID=philip;Password=123;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
         }
     }
 }
