@@ -3,6 +3,7 @@ using HiveMQtt.Client.Options;
 using HiveMQtt.MQTT5.ReasonCodes;
 using HiveMQtt.MQTT5.Types;
 using System.Text.Json;
+using Models;
 
 var options = new HiveMQClientOptions
 {
@@ -51,7 +52,15 @@ client.OnMessageReceived += (sender, args) =>
 {
     string received_message = args.PublishMessage.PayloadAsString;
     Console.WriteLine(received_message);
-
+    try
+    {
+        LightLog lightlog = JsonSerializer.Deserialize<LightLog>(received_message);
+        Console.WriteLine(lightlog.TimeOnly);
+    }
+    catch (JsonException ex)
+    {
+        Console.WriteLine($"Error deserializing JSON: {ex.Message}");
+    }
 };
 while (true)
 {
