@@ -4,7 +4,7 @@ using HiveMQtt.MQTT5.ReasonCodes;
 using HiveMQtt.MQTT5.Types;
 using System.Text.Json;
 using Models;
-using LightTrackerAPIAPI.Controllers;
+using LightTrackerAPI.Controllers;
 
 var options = new HiveMQClientOptions
 {

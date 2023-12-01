@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LightTrackerAPI.Data;
 using Models;
 
-namespace LightTrackerAPIAPI.Controllers
+namespace LightTrackerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
