@@ -10,7 +10,7 @@ using Models;
 
 namespace LightTrackerAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class LightLogsController : ControllerBase
     {
