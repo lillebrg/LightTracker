@@ -17,8 +17,8 @@ namespace LightTrackerAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,16 +69,6 @@ namespace LightTrackerAPI.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_LightLogs_ProductId",
-                table: "LightLogs",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_ProductId",
-                table: "User",
-                column: "ProductId");
         }
 
         /// <inheritdoc />
@@ -88,10 +78,10 @@ namespace LightTrackerAPI.Migrations
                 name: "LightLogs");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Product");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "User");
         }
     }
 }
