@@ -116,6 +116,36 @@ namespace LightTrackerAPI.Controllers
             return NoContent();
         }
 
+        // DELETE: api/LightLogs
+        [HttpDelete]
+        public async Task<IActionResult> DeleteLightLogs([FromBody] int[] ids)
+        {
+            try
+            {
+                if (ids == null || !ids.Any())
+                {
+                    return BadRequest("Please provide IDs to delete.");
+                }
+
+                var lightLogs = await _context.LightLogs.Where(log => ids.Contains(log.Id)).ToListAsync();
+                if (lightLogs == null || !lightLogs.Any())
+                {
+                    return NotFound("No matching records found for the provided IDs.");
+                }
+
+                _context.LightLogs.RemoveRange(lightLogs);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+
+
         private bool LightLogExists(int id)
         {
             return (_context.LightLogs?.Any(e => e.Id == id)).GetValueOrDefault();
