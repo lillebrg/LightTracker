@@ -33,14 +33,14 @@ namespace LightTrackerAPI.Controllers
         }
 
         // GET: api/LightLogs/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<LightLog>> GetLightLog(int id)
+        [HttpGet("{productid}")]
+        public async Task<ActionResult<IEnumerable<LightLog>>> GetCustomerLightLogs(int productid)
         {
           if (_context.LightLogs == null)
           {
               return NotFound();
           }
-            var lightLog = await _context.LightLogs.FindAsync(id);
+            var lightLog = await _context.LightLogs.Where(l => l.ProductId == productid).ToListAsync();
 
             if (lightLog == null)
             {

@@ -10,8 +10,8 @@ var options = new HiveMQClientOptions
     Host = "7bcfe2b0a4e14297a88120d2ceebe0d3.s2.eu.hivemq.cloud",
     Port = 8883,
     UseTLS = true,
-    UserName = "Chulmoo",
-    Password = "Hero34dkl",
+    UserName = "LilleBRG",
+    Password = "L1ttle!!",
 };
 var client = new HiveMQClient(options);
 
@@ -54,10 +54,6 @@ client.OnMessageReceived += (sender, args) =>
     Console.WriteLine(received_message);
     try
     {
-
-        //productid er null og det må den ikke være.
-        //enten lav ordenlig arduino JSON structure og send det med,
-        //eller fjern noget fra model for ikke at gøre det for advanceret
         LightLog lightlog = JsonSerializer.Deserialize<LightLog>(received_message);
         lightlog.DateSent = DateTime.Now;
         LightLogsController l = new LightLogsController();
