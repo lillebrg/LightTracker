@@ -33,14 +33,14 @@ namespace LightTrackerAPI.Controllers
         }
 
         // GET: api/LightLogs/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<LightLog>> GetLightLog(int id)
+        [HttpGet("{productid}")]
+        public async Task<ActionResult<IEnumerable<LightLog>>> GetCustomerLightLogs(int productid)
         {
           if (_context.LightLogs == null)
           {
               return NotFound();
           }
-            var lightLog = await _context.LightLogs.FindAsync(id);
+            var lightLog = await _context.LightLogs.Where(l => l.ProductId == productid).ToListAsync();
 
             if (lightLog == null)
             {
@@ -115,6 +115,36 @@ namespace LightTrackerAPI.Controllers
 
             return NoContent();
         }
+
+        // DELETE: api/LightLogs
+        [HttpDelete]
+        public async Task<IActionResult> DeleteLightLogs([FromBody] int[] ids)
+        {
+            try
+            {
+                if (ids == null || !ids.Any())
+                {
+                    return BadRequest("Please provide IDs to delete.");
+                }
+
+                var lightLogs = await _context.LightLogs.Where(log => ids.Contains(log.Id)).ToListAsync();
+                if (lightLogs == null || !lightLogs.Any())
+                {
+                    return NotFound("No matching records found for the provided IDs.");
+                }
+
+                _context.LightLogs.RemoveRange(lightLogs);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+
 
         private bool LightLogExists(int id)
         {

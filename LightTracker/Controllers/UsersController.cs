@@ -32,15 +32,11 @@ namespace LightTrackerAPI.Controllers
             return await _context.User.ToListAsync();
         }
 
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        // POST: api/Users/Login
+        [HttpPost("Login")]
+        public async Task<ActionResult<User>> LoginUser([FromBody] User login)
         {
-          if (_context.User == null)
-          {
-              return NotFound();
-          }
-            var user = await _context.User.FindAsync(id);
+            var user = await _context.User.FirstOrDefaultAsync(u => u.UserName == login.UserName && u.Password == login.Password);
 
             if (user == null)
             {
@@ -49,6 +45,7 @@ namespace LightTrackerAPI.Controllers
 
             return user;
         }
+
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
